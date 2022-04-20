@@ -74,7 +74,7 @@ class Redirect
         $redirectPath = self::DOMAINS_REDIRECT_CONFIG[$domain][self::CONFIG_KEY_PATH] ?? $path;
         $redirectHttpCode = self::DOMAINS_REDIRECT_CONFIG[$domain][self::CONFIG_KEY_HTTP_CODE] ?? self::DEFAULT_HTTP_CODE;
 
-        $this->redirect($redirectProtocol, $redirectSubdomain . '.', $redirectDomain, $redirectPath, $redirectHttpCode);
+        $this->redirectToLocation($redirectProtocol, $redirectSubdomain . '.', $redirectDomain, $redirectPath, $redirectHttpCode);
     }
 
     private function getHost(): string
@@ -111,7 +111,7 @@ class Redirect
         return $_SERVER['REQUEST_URI'] ?? self::DEFAULT_PATH;
     }
 
-    private function redirect(string $protocol, string $subdomain, string $domain, string $path, int $httpCode): void
+    private function redirectToLocation(string $protocol, string $subdomain, string $domain, string $path, int $httpCode): void
     {
         header('Location: ' . $protocol . '://' . ltrim($subdomain, '.') . $domain . $path, true, $httpCode);
     }
