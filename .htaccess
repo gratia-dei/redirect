@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+  #ErrorDocument 404 /
+
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+
+  RewriteRule .* redirect.php [L]
+</IfModule>
