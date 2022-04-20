@@ -12,6 +12,7 @@ class Redirect
     private const DOMAIN_GRATIA_DEI = 'gratiadei.org';
     private const DOMAIN_MY_PATRONS = 'mypatrons.org';
     private const DOMAIN_PATRONS_SPACE = 'patrons.space';
+    private const DOMAIN_GITHUB_PREFIX = 'github.com/gratia-dei/';
 
     private const DEFAULT_PROTOCOL = self::SECURE_PROTOCOL;
     private const DEFAULT_SUBDOMAIN = '';
@@ -26,16 +27,34 @@ class Redirect
     private const CONFIG_KEY_HTTP_CODE = 'http_code';
 
     private const DOMAINS_REDIRECT_CONFIG = [
+        'gratiadei.org' => [
+            self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB_PREFIX . 'gratia-dei',
+            self::CONFIG_KEY_PATH => '',
+            self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
+        ],
         'moipatroni.pl' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
             self::CONFIG_KEY_SUBDOMAIN => 'pl',
             self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
+        'mypatrons.org' => [
+            self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB_PREFIX . 'my-patrons',
+            self::CONFIG_KEY_PATH => '',
+            self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
+        ],
         'mypatrons.pl' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
             self::CONFIG_KEY_SUBDOMAIN => 'pl',
             self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
+            self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
+        ],
+        'patrons.space' => [
+            self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB_PREFIX . 'patrons-space',
+            self::CONFIG_KEY_PATH => '',
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
     ];
