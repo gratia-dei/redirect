@@ -12,7 +12,7 @@ class Redirect
     private const DOMAIN_GRATIA_DEI = 'gratiadei.org';
     private const DOMAIN_MY_PATRONS = 'mypatrons.org';
     private const DOMAIN_PATRONS_SPACE = 'patrons.space';
-    private const DOMAIN_GITHUB_PREFIX = 'github.com/gratia-dei/';
+    private const DOMAIN_GITHUB = 'github.com';
 
     private const DEFAULT_PROTOCOL = self::SECURE_PROTOCOL;
     private const DEFAULT_SUBDOMAIN = '';
@@ -29,8 +29,8 @@ class Redirect
     private const DOMAINS_REDIRECT_CONFIG = [
         'gratiadei.org' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
-            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB_PREFIX . 'gratia-dei',
-            self::CONFIG_KEY_PATH => '',
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB,
+            self::CONFIG_KEY_PATH => '/gratia-dei/gratia-dei',
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
         'moipatroni.pl' => [
@@ -41,8 +41,8 @@ class Redirect
         ],
         'mypatrons.org' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
-            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB_PREFIX . 'my-patrons',
-            self::CONFIG_KEY_PATH => '',
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB,
+            self::CONFIG_KEY_PATH => '/gratia-dei/my-patrons',
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
         'mypatrons.pl' => [
@@ -53,8 +53,8 @@ class Redirect
         ],
         'patrons.space' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
-            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB_PREFIX . 'patrons-space',
-            self::CONFIG_KEY_PATH => '',
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB,
+            self::CONFIG_KEY_PATH => '/gratia-dei/patrons-space',
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
     ];
