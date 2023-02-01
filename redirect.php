@@ -2,6 +2,8 @@
 
 class Redirect
 {
+    //set TESTING_HOST null value to domain to test locally, e.g. 'gratiadei.pl'
+    //DO NOT DEPLOY NOT NULL VALUE ON PROD!!!
     private const TESTING_HOST = null;
 
     private const SECURE_PROTOCOL = 'https';
@@ -27,10 +29,16 @@ class Redirect
     private const CONFIG_KEY_HTTP_CODE = 'http_code';
 
     private const DOMAINS_REDIRECT_CONFIG = [
-        'gratiadei.org' => [
+        'source.gratiadei.org' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
             self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB,
             self::CONFIG_KEY_PATH => '/gratia-dei/gratia-dei',
+            self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
+        ],
+        'gratiadei.org' => [
+            self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
+            self::CONFIG_KEY_SUBDOMAIN => 'pl',
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GRATIA_DEI,
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
         'gratiadei.pl' => [
@@ -74,11 +82,13 @@ class Redirect
         $domain = $this->getDomainFromHost($host);
         $path = $this->getPath();
 
-        $redirectProtocol = self::DOMAINS_REDIRECT_CONFIG[$domain][self::CONFIG_KEY_PROTOCOL] ?? self::DEFAULT_PROTOCOL;
-        $redirectSubdomain = self::DOMAINS_REDIRECT_CONFIG[$domain][self::CONFIG_KEY_SUBDOMAIN] ?? self::DEFAULT_SUBDOMAIN;
-        $redirectDomain = self::DOMAINS_REDIRECT_CONFIG[$domain][self::CONFIG_KEY_DOMAIN] ?? self::DEFAULT_DOMAIN;
-        $redirectPath = self::DOMAINS_REDIRECT_CONFIG[$domain][self::CONFIG_KEY_PATH] ?? $path;
-        $redirectHttpCode = self::DOMAINS_REDIRECT_CONFIG[$domain][self::CONFIG_KEY_HTTP_CODE] ?? self::DEFAULT_HTTP_CODE;
+        $domainWithSubdomain = trim("$subdomain.$domain", '.');
+
+        $redirectProtocol = self::DOMAINS_REDIRECT_CONFIG[$domainWithSubdomain][self::CONFIG_KEY_PROTOCOL] ?? self::DEFAULT_PROTOCOL;
+        $redirectSubdomain = self::DOMAINS_REDIRECT_CONFIG[$domainWithSubdomain][self::CONFIG_KEY_SUBDOMAIN] ?? self::DEFAULT_SUBDOMAIN;
+        $redirectDomain = self::DOMAINS_REDIRECT_CONFIG[$domainWithSubdomain][self::CONFIG_KEY_DOMAIN] ?? self::DEFAULT_DOMAIN;
+        $redirectPath = self::DOMAINS_REDIRECT_CONFIG[$domainWithSubdomain][self::CONFIG_KEY_PATH] ?? $path;
+        $redirectHttpCode = self::DOMAINS_REDIRECT_CONFIG[$domainWithSubdomain][self::CONFIG_KEY_HTTP_CODE] ?? self::DEFAULT_HTTP_CODE;
 
         $this->redirectToLocation($redirectProtocol, $redirectSubdomain . '.', $redirectDomain, $redirectPath, $redirectHttpCode);
     }
@@ -119,7 +129,12 @@ class Redirect
 
     private function redirectToLocation(string $protocol, string $subdomain, string $domain, string $path, int $httpCode): void
     {
-        header('Location: ' . $protocol . '://' . ltrim($subdomain, '.') . $domain . $path, true, $httpCode);
+        $location = 'Location: ' . $protocol . '://' . ltrim($subdomain, '.') . $domain . $path;
+        if (!is_null(self::TESTING_HOST)) {
+            exit("Testing mode for domain: '" . self::TESTING_HOST . "' redirection is: '$location'. Stopped ...");
+        }
+
+        header($location, true, $httpCode);
     }
 }
 
