@@ -53,7 +53,7 @@ class Redirect
             self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
-        'mypatrons.org' => [
+        'source.mypatrons.org' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
             self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB,
             self::CONFIG_KEY_PATH => '/gratia-dei/my-patrons',
@@ -65,7 +65,7 @@ class Redirect
             self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
-        'patrons.space' => [
+        'source.patrons.space' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
             self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB,
             self::CONFIG_KEY_PATH => '/gratia-dei/patrons-space',
