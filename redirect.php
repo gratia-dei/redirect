@@ -11,14 +11,12 @@ class Redirect
     private const HTTP_CODE_MOVED_PERMANENTLY = 301;
     private const HTTP_CODE_MOVED_TEMPORARILY = 302;
 
-    private const DOMAIN_GRATIA_DEI = 'gratiadei.org';
     private const DOMAIN_MY_PATRONS = 'mypatrons.org';
-    private const DOMAIN_PATRONS_SPACE = 'patrons.space';
     private const DOMAIN_GITHUB = 'github.com';
 
     private const DEFAULT_PROTOCOL = self::SECURE_PROTOCOL;
     private const DEFAULT_SUBDOMAIN = '';
-    private const DEFAULT_DOMAIN = self::DOMAIN_GRATIA_DEI;
+    private const DEFAULT_DOMAIN = self::DOMAIN_MY_PATRONS;
     private const DEFAULT_PATH = '/';
     private const DEFAULT_HTTP_CODE = self::HTTP_CODE_MOVED_TEMPORARILY;
 
@@ -29,22 +27,18 @@ class Redirect
     private const CONFIG_KEY_HTTP_CODE = 'http_code';
 
     private const DOMAINS_REDIRECT_CONFIG = [
-        'source.gratiadei.org' => [
-            self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
-            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GITHUB,
-            self::CONFIG_KEY_PATH => '/gratia-dei/gratia-dei',
-            self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
-        ],
         'gratiadei.org' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
             self::CONFIG_KEY_SUBDOMAIN => 'pl',
-            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GRATIA_DEI,
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
+            self::CONFIG_KEY_PATH => '/about-us',
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
         'gratiadei.pl' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
             self::CONFIG_KEY_SUBDOMAIN => 'pl',
-            self::CONFIG_KEY_DOMAIN => self::DOMAIN_GRATIA_DEI,
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
+            self::CONFIG_KEY_PATH => '/about-us',
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
         'moipatroni.pl' => [
@@ -66,12 +60,6 @@ class Redirect
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
         'parafie.org' => [
-            self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
-            self::CONFIG_KEY_SUBDOMAIN => 'pl',
-            self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
-            self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
-        ],
-        'patrons.space' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
             self::CONFIG_KEY_SUBDOMAIN => 'pl',
             self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
