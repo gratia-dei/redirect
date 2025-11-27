@@ -41,7 +41,25 @@ class Redirect
             self::CONFIG_KEY_PATH => '/about-us',
             self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
         ],
+        'moipatroni.com' => [
+            self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
+            self::CONFIG_KEY_SUBDOMAIN => 'pl',
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
+            self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
+        ],
+        'moipatronowie.com' => [
+            self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
+            self::CONFIG_KEY_SUBDOMAIN => 'pl',
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
+            self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
+        ],
         'moipatroni.pl' => [
+            self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
+            self::CONFIG_KEY_SUBDOMAIN => 'pl',
+            self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
+            self::CONFIG_KEY_HTTP_CODE => self::HTTP_CODE_MOVED_PERMANENTLY,
+        ],
+        'moipatronowie.pl' => [
             self::CONFIG_KEY_PROTOCOL => self::SECURE_PROTOCOL,
             self::CONFIG_KEY_SUBDOMAIN => 'pl',
             self::CONFIG_KEY_DOMAIN => self::DOMAIN_MY_PATRONS,
